@@ -35,6 +35,31 @@ public class NettyServer {
         .childOption(ChannelOption.TCP_NODELAY, true)
         .childOption(ChannelOption.SO_SNDBUF, 32000)
         .childOption(ChannelOption.SO_RCVBUF, 32000)
+        .childOption(ChannelOption.TCP_NODELAY, true)
+        //other options below
+//        .option(ChannelOption.SO_BACKLOG, 128)
+//        .childOption(ChannelOption.SO_KEEPALIVE, true)
+//        .childOption(ChannelOption.WRITE_BUFFER_WATER_MARK, new WriteBufferWaterMark(32 * 1024, 64 * 1024))
+//        .childOption(ChannelOption.RCVBUF_ALLOCATOR, new AdaptiveRecvByteBufAllocator(64, 1024, 65536))
+//        .childOption(ChannelOption.AUTO_READ, false)
+//        .childOption(ChannelOption.CONNECT_TIMEOUT_MILLIS, 5000)
+//        .childOption(ChannelOption.TCP_NODELAY, true)
+//        .childOption(ChannelOption.WRITE_SPIN_COUNT, 16)
+//        .childOption(ChannelOption.ALLOW_HALF_CLOSURE, false)
+//        .childOption(ChannelOption.MESSAGE_SIZE_ESTIMATOR, DefaultMessageSizeEstimator.DEFAULT)
+//        .childOption(ChannelOption.SO_REUSEADDR, true)
+//        .childOption(ChannelOption.SO_SNDBUF, 1048576)
+//        .childOption(ChannelOption.SO_RCVBUF, 1048576)
+//        .childOption(ChannelOption.SO_LINGER, -1)
+//        .childOption(ChannelOption.SO_KEEPALIVE, true)
+//        .childOption(ChannelOption.WRITE_BUFFER_WATER_MARK, new WriteBufferWaterMark(32 * 1024, 64 * 1024))
+//        .childOption(ChannelOption.RCVBUF_ALLOCATOR, new AdaptiveRecvByteBufAllocator(64, 1024, 65536))
+//        .childOption(ChannelOption.AUTO_READ, false)
+//        .childOption(ChannelOption.CONNECT_TIMEOUT_MILLIS, 5000)
+//        .childOption(ChannelOption.TCP_NODELAY, true)
+//        .childOption(ChannelOption.WRITE_SPIN_COUNT, 16)
+//        .childOption(ChannelOption.ALLOW_HALF_CLOSURE, false)
+//        .childOption(ChannelOption.MESSAGE_SIZE_ESTIMATOR, DefaultMessageSizeEstimator.DEFAULT)
        // .handler(new NettyServerHandler())
         .childHandler(new ChannelInitializer<SocketChannel>() {
 
@@ -74,8 +99,6 @@ public class NettyServer {
         }
 
     }
-
-
 
 }
 

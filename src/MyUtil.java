@@ -1,18 +1,30 @@
 
-
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class MyUtil {
 
     public static final String DATE_FORMAT_YMD = "yyyyMMdd";
+    public static final String DATE_FORMAT_YMDD = "yyyy-MM-dd";
     public static final String TIME_FORMAT_YMD = "HH:mm:ss";
     public static final String TIME_FORMAT_NOW = "HH:mm";
 
     public static String getTodaysDate() {
         SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT_YMD);
+        Date today = new Date();
+        return formatter.format(today);
+    }
+    
+    public static String getTodaysDateDash() {
+        SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT_YMDD);
         Date today = new Date();
         return formatter.format(today);
     }
@@ -52,4 +64,41 @@ public class MyUtil {
         return res.substring(0, res.length() - need.length());
     }
     
+    public static String getRandomNumbers(int limited) {
+    	
+    	Random random = new Random();
+    	int min = 0;
+    	int max = 50;
+    	String numbers = Stream.generate(()-> String.valueOf(random.nextInt(max - min + 1) + min))
+    			.limit(limited).collect(Collectors.joining());
+    	return numbers;
+    	
+    }
+    
+    public static String generateUniqueRandomNumbers(int min, int max, int count) {
+        if (count > (max - min + 1)) {
+            throw new IllegalArgumentException("Count cannot exceed the range of numbers");
+        }
+
+        Set<Integer> uniqueNumbers = new HashSet<>();
+        Random random = new Random();
+
+        while (uniqueNumbers.size() < count) {
+            int randomNumber = random.nextInt(max - min + 1) + min;
+            uniqueNumbers.add(randomNumber);
+        }
+
+        return String.join(",", uniqueNumbers.toString()
+                .replaceAll("\\[", "")
+                .replaceAll("\\]", "")
+                .split(", "));
+    }
+    
+    public static String shuffleArrayToString(String[] array) {
+        List<String> list = new ArrayList<>();
+        Collections.addAll(list, array);
+        Collections.shuffle(list);
+        return list.stream().collect(Collectors.joining(", "));
+    }
+
 }

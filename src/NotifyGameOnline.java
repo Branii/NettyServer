@@ -13,7 +13,7 @@ class NotifyGameOnline{
 			 pstmt.setString(1, "online");
 			 pstmt.setString(2, gamehash);
 			 pstmt.executeUpdate();
- 			 System.out.print("GAME IS ONLINE");
+ 			 //System.out.print("GAME IS ONLINE");
 			 pstmt.close();
 			 connection.close();
 			 

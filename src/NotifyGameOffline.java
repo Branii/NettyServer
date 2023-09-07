@@ -7,11 +7,12 @@ import java.sql.SQLException; class NotifyGameOffline{
 		try (Connection connection = Conf.getConnection()) {
 			 
 			 String sql = "UPDATE games SET sessionId = ? WHERE game_hash = ?";
+			 String Offline = "Offline";
 			 PreparedStatement pstmt = connection.prepareStatement(sql);
-			 pstmt.setString(1, "offline");
+			 pstmt.setString(1, Offline);
 			 pstmt.setString(2, gamehash);
 			 pstmt.executeUpdate();
-			 System.out.print("GAME IS OFFLINE");
+			 System.out.print("Game is offline: " + gamehash);
 			 pstmt.close();
 		     connection.close();
 			 
